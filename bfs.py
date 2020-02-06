@@ -39,7 +39,17 @@ while queue:
     # Dequeue a vertex from  
     # queue and print it 
     s = queue.pop(0)   # pops the oldest element out
+    visited.append(s)
     print (s.position, end = " ") 
+    availableDirections=[]
+    if s.left!=None:
+        availableDirections.append(s.left)
+    if s.right!=None:
+        availableDirections.append(s.right)
+    if s.up!=None:
+        availableDirections.append(s.up)
+    if s.down!=None:
+        availableDirections.append(s.down)
     if s==_21: # Goal is reached
         break
 
@@ -47,7 +57,7 @@ while queue:
     # dequeued vertex s. If a adjacent 
     # has not been visited, then mark it 
     # visited and enqueue it 
-    for i in grid: 
+    for i in availableDirections: 
         if not i in visited: 
             queue.append(i) 
-            visited.append(i)
+            # visited.append(i)
